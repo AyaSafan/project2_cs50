@@ -1,5 +1,5 @@
 # project2_cs50
-online messaging service website ChatBit
+# Online messaging service ChatBit
 
 Display Name: When a user visits the web application for the first time, theyshould sign up with a display name and a password that they can login with later. The display name will eventually be associated with every message the user sends. If a user closes the page without loging out and returns to your app later, the display name is still be remembered.
 
