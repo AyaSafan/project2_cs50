@@ -1,0 +1,107 @@
+
+
+{% extends "layout.html" %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+<script id="result" type="text/x-handlebars-template">
+<a href="" class="nav-item nav-link" data-page="{% raw -%}{{ value }}{%- endraw %}">{% raw -%}{{ value }}{%- endraw %}</a>
+
+</script>
+
+<script src="{{ url_for('static', filename='channels.js') }}"></script>
+{% endblock %}
+
+{% block title %}Channels{% endblock %}
+
+{% block body_style %}
+style=" height: 100%;
+background-image: url('{{url_for('static', filename='bg2.png')}}');"
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid"> 
+        <div class="row content">
+            <div class="col-lg-3" id="sidnav">
+                <div style=" height:50px;"></div>
+                <center>
+                <div class="img-circle">
+                    <br><h3>{{ user }}</h3>
+                </div><br><br>
+                    <form id="new-channel">
+                       
+                        <div class="form-group">
+                          
+                          <input class="form-control" id="channel" placeholder="Create New Channel" name="channel_name" >
+                        </div>
+
+                          <center><button id="submit"  type="submit" class="btn btn-lg btn-primary" >Create Channel</button></center>
+                      </form><br><br>
+                   <div style="background-color: #262626; padding: 10px;">
+                       <h3>Public Channels</h3>
+                       <hr style="border-top: 1px solid white;">
+                       <h4 id="channel_label"></h4>
+                    </div> 
+                                   
+                
+                <nav class="nav nav-pills flex-column" id="channels">
+                    {% for channel in channels %}
+                    <a href="" class="nav-item nav-link" data-page="{{ channel.name }}">{{ channel.name }}</a>
+                    {% endfor %}
+                    
+                    
+                    
+                </nav>
+                
+                    <form id="logout">
+                        <button id="logout" type="submit" class="btn btn-lg btn-primary" >LogOut</button>
+                    </form><br>
+                
+                </center>
+            </div>
+            <div class="col-lg-9" id="channel_feed">            
+                
+               <div class="inner_feed">
+                
+                <div class="wrapper"> <div class="messages" >
+                 <div id="feed">   
+                <div class="container-fluid message ">
+                    <h6> User 1</h6>
+  
+                  <p>Choose or Create a channel to Begin Chatting!</p>
+                  <span class="time-left">00:00</span>
+                </div>
+                
+                <div class="container-fluid message ">
+                    <h6> User 2</h6>
+  
+                  <p>Join Us NOW!</p>
+                  <span class="time-left">00:01</span>
+                </div>
+                    
+                    </div></div></div>
+                 
+                     
+                <div id="form_msg">
+                <form id="new-message" >
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <textarea id="message_box" class="form-control form-rounded" placeholder="   write a message..." rows="3" ></textarea>                    </div>
+                        <button id="send"  type="submit" class="btn btn-lg btn-primary">Send</button>
+                    
+                </div>     
+                </form>
+                </div>
+                
+            </div>
+            
+            </div>
+            
+
+
+    </div>
+
+{% endblock %}

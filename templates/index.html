@@ -1,0 +1,58 @@
+
+
+{% extends "layout.html" %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_style %}
+style=" height: 100%;
+background-image: url('{{url_for('static', filename='bg2.png')}}');"
+{% endblock %}
+ 
+{% block body %}
+
+<div class="container card-container"> 
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-8">
+            <div class="card signin-card">
+                <center>
+                    <h1>WELCOME TO ChatBit</h1>
+                    <br>
+                      <p class="lead font-weight-normal">Log In with your username or create a new username.
+                    </p>
+                    <br>
+                </center>
+                    
+                      <form id="new-user" >
+                        <div class="form-group">
+                          <label class="lead font-weight-normal">Username</label>
+                          <input class="form-control" id="user" placeholder="Enter Username" name="user" data-num=1>
+                        </div>
+                        <div class="form-group">
+                          <label class="lead font-weight-normal">Password</label>
+                          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" data-num=2>
+                        </div>
+
+                          <center><button id="submit" type="submit" class="btn btn-lg btn-primary">Submit</button></center>
+                      </form>
+                        <br>
+                    <center>
+                    <p class="error" id="result">{{ txt }} </p></center>
+                    
+
+                
+
+            </div>
+            </div>
+            <div class="col"></div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

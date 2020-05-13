@@ -1,0 +1,38 @@
+
+
+{% extends "layout.html" %}
+
+{% block script %}
+<script >
+    document.addEventListener('DOMContentLoaded', () => {
+    const user = localStorage.getItem("user");
+    if (user === null){
+        window.location.href = '/sign'
+    }
+    else{
+        const pwd = localStorage.getItem("pwd");
+        const request = new XMLHttpRequest();
+        // Add data to send with request
+        const data = new FormData();
+        data.append('user', user);
+        data.append('pwd', pwd);
+        request.open('POST', '/loged');
+        // Send request
+        request.send(data);
+            
+        request.onload = () => {
+            // Extract JSON data from request
+            const data = JSON.parse(request.responseText);
+            // Update the result div
+            if (data.success) {
+                window.location.href = '/channels' 
+            }
+        }
+    }      
+});
+</script>
+{% endblock %}
+
+{% block title %}Intro{% endblock %}
+
+ 
